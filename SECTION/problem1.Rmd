@@ -1,0 +1,95 @@
+---
+title: "Problem Section 1"
+subtitle:  "The z test"
+graphics: yes
+output: pdf_document
+header-includes:
+    - \usepackage{amsmath, amssymb}
+    - \usepackage{framed}\definecolor{shadecolor}{rgb}{0.949,0.949,0.949}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\begin{shaded}
+
+\textbf{Learning Outcomes}
+
+The problems are designed to build conceptual understanding and problem-solving skills. The emphasis is on learning to find, evaluate and build confidence. The specific tasks include: 
+
+   - Perform a large sample z-test for the mean 
+   
+   - Perform a large sample z-test for a binomial proportion
+   
+   - Back up and support work with relevant explanations
+
+
+\end{shaded}
+
+* * *
+
+### Exercises 
+
+1. Suppose $n = 36$ observations are taken from a distribution with (unknown) mean $\mu_0$ and (known) standard deviation $\sigma_0 = 8.0$ for the purpose of testing
+$H_0: \mu_0 = 60$ versus $H_1: \mu_0 \neq  60$ at the $\alpha = 0.07$ level of significance. (You may assume the CLT holds)
+
+a. Find the rejection region of the $\alpha = 0.07$ level test. That is, what $\bar{x}$ values will the test reject the null hypothesis for?
+
+b. Find the Type II error probability of the test from part a when $\mu_0 = 62$. 
+
+c. Fill in the asterix in the expression for the confidence interval estimator which is the dual of the $\alpha = 0.07$ level significance test. Then find this number.
+What is the confidence level of this interval?
+
+    $$\bar{X} \pm z_{*} \frac{\sigma_0}{\sqrt{n} }$$
+ 
+
+d. Suppose we observe the following data from this distribution. Calculate the P-value for the z-test of the hypotheses. What do you conclude at level $\alpha = 0.07$? Also, calculate your confidence interval from part c. Are the conclusions consistent?
+
+    ```{r}
+
+    x <- c( 60.38177, 55.85411, 56.00701, 40.08123, 57.13299, 59.62223,
+        46.52059, 50.41849, 50.91220, 54.54830, 57.11061, 55.24721,
+        73.26509, 61.65243, 64.88023, 45.96668, 57.81319, 55.62688,
+        48.95113, 61.41349, 61.39330, 61.27571, 60.01789, 57.22339, 
+        61.11239, 63.28603, 43.76773, 80.24444, 60.02996, 48.08963, 
+        33.59426, 50.96914, 69.70207, 45.53624, 40.37203, 67.80395)
+    ```
+
+
+
+2. A manufacturer of rat poison claims that 82.87% of rats will be killed by their formulation. In order to verify the manufacturer's claim, an experiment is conducted where 150 rats are given
+the poison, and 115 (76.67%) of them die. Do the results of this experiment indicate that the manufacturer has overestimated the effect of the poison? Let us conduct a level $\alpha  = 0.01$ significance test to find out.
+
+    Suppose $X_i$ denote whether or not the $ith$ rat survives (0) or dies (1). Then we can assume
+$$X_1,X_2,\dots,X_{150} \overset{i.i.d.}{\sim} Bernoulli(\pi_0)$$
+    where $\pi_0$ is the true \emph{kill rate} of the rat poison.
+    
+    We are interested in testing the hypotheses in this model:
+$$
+H_0: \pi_0 = 0.8237 \ \ \ H_1: \pi_0 < 0.8237
+$$
+
+    
+a. \textbf{Exact binomial test} Suppose the test will be based on the test statistic
+   $$X = X_1 + X_2 + \dots + X_{150},$$
+   the number of rats (out of 150) which will die when administered the poison.
+   
+    Answer the following questions.
+
+    i. What is the distribution of $X$? 
+    ii. Find the P-value to assess the evidence against $H_0$ and in favor of $H_1$ when we observe $x_{obs} = 115$.
+    Hint: do large or small (or both) values of $X$ support $H_1$?
+    iii. What do you conclude?
+
+b. \textbf{z test} Suppose the test will be based on the test statistic
+   $$\bar{X} = \frac{1}{150} \left(X_1 + X_2 + \dots + X_{150}\right)$$
+   the fraction of rats (out of 150) which will die when administered the poison.
+
+    Answer the following questions.
+
+    i. What does the Central Limit Theorem say about the distribution of $\bar{X}$? 
+    ii. Find the P-value to assess the evidence against $H_0$ and in favor of $H_1$ when we observe $\bar{x}_{obs} = \frac{115}{150} = `r round(115/150,4)`$.
+    iii. What do you conclude?
+
+
