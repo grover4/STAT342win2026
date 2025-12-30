@@ -2,7 +2,10 @@
 title: "Problem Section 1"
 subtitle:  "The z test"
 graphics: yes
-output: pdf_document
+output: 
+  pdf_document:
+    highlight: null
+    pandoc_args: ["--syntax-highlighting=tango"]
 header-includes:
     - \usepackage{amsmath, amssymb}
     - \usepackage{framed}\definecolor{shadecolor}{rgb}{0.949,0.949,0.949}
